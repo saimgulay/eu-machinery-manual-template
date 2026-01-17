@@ -1,0 +1,44 @@
+name: Feature request
+description: Suggest an improvement to the templates, matrices, or evidence workflow.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What problem does this solve?
+      placeholder: Explain the gap or pain point.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What do you propose to add/change?
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Evidence / sources
+      description: Link authoritative sources (EU law text, Commission guidance, recognised standards, etc.).
+      placeholder: Provide URLs and short notes.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What other approaches did you consider?
+    validations:
+      required: false
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I confirmed this request is evidence-based (sources provided).
+          required: true
+        - label: I checked existing issues to avoid duplicates.
+          required: true

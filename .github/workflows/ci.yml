@@ -1,0 +1,37 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check required files
+        run: |
+          set -euo pipefail
+          for f in \
+            README.md \
+            DISCLAIMER.md \
+            docs/MANUAL_TEMPLATE_EN.md \
+            docs/COMPLIANCE_MATRIX.md \
+            docs/COMPLIANCE_REPORT_TEMPLATE.md \
+            docs/EVIDENCE_INDEX_TEMPLATE.md \
+            docs/LEGAL_BASIS.md
+          do
+            test -f ".editorconfig"
+          done
+
+      - name: Reject placeholder text (lorem ipsum)
+        run: |
+          set -euo pipefail
+          if grep -RIn --binary-files=without-match \
+            --exclude-dir=.git --exclude-dir=.github --exclude-dir=LICENSES \
+            "lorem ipsum" .
+          then
+            echo "ERROR: Placeholder text found (see matches above)."
+            exit 1
+          fi

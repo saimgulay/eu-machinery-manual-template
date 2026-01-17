@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Live docs
+    url: https://saimgulay.github.io/eu-machinery-manual-template/
+    about: Read the template and framework documentation via GitHub Pages.
